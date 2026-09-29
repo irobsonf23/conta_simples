@@ -557,24 +557,6 @@ form.addEventListener(
 const texto =
     await resposta.text();
 
-console.log("Status:", resposta.status);
-console.log("Resposta recebida:", texto);
-
-if (!resposta.ok) {
-    throw new Error(
-        `Erro ${resposta.status}: ${texto}`
-    );
-}
-
-let dados;
-
-try {
-    dados = JSON.parse(texto);
-} catch (erro) {
-    throw new Error(
-        "A API não retornou JSON. Resposta recebida: " + texto.slice(0, 200)
-    );
-}
 
 
             // =================================
