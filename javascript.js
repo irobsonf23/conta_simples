@@ -1,4 +1,4 @@
-```javascript
+
 console.log("JavaScript carregado!");
 
 
@@ -825,4 +825,4 @@ Situação cadastral: ${statusConsultaAtual}`;
     );
 
 }
-```
+
