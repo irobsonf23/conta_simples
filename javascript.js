@@ -551,14 +551,30 @@ form.addEventListener(
             // CONSULTA API
             // =================================
 
-            const resposta =
-                await fetch(
-                    `/api/cnpj/${cnpj}`
-                );
+        const resposta =
+    await fetch(`/api/cnpj/${cnpj}`);
 
+const texto =
+    await resposta.text();
 
-            const dados =
-                await resposta.json();
+console.log("Status:", resposta.status);
+console.log("Resposta recebida:", texto);
+
+if (!resposta.ok) {
+    throw new Error(
+        `Erro ${resposta.status}: ${texto}`
+    );
+}
+
+let dados;
+
+try {
+    dados = JSON.parse(texto);
+} catch (erro) {
+    throw new Error(
+        "A API não retornou JSON. Resposta recebida: " + texto.slice(0, 200)
+    );
+}
 
 
             // =================================
