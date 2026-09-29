@@ -1,0 +1,987 @@
+agora profissionalize os novos conteudos que foram selecionados 
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #123c69;
+    --primary-dark: #0b2949;
+    --primary-light: #eaf2f9;
+
+    --text: #17212b;
+    --text-light: #687582;
+
+    --background: #f6f8fb;
+    --white: #ffffff;
+
+    --border: #e2e8ef;
+
+    --success: #16865b;
+    --error: #c0392b;
+
+    --radius: 18px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    min-height: 100vh;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    height: 82px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border-bottom: 1px solid rgba(226, 232, 239, 0.8);
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    z-index: 10;
+}
+
+.header-content {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.logo img {
+    display: block;
+
+    width: auto;
+    max-width: 250px;
+    max-height: 130px;
+    margin-top: -15px;
+    
+}
+
+
+/* =========================================
+   WHATSAPP HEADER
+========================================= */
+
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 17px;
+
+    border: 1px solid #dce4eb;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #26333f;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.whatsapp-button:hover {
+    transform: translateY(-2px);
+
+    border-color: #c7d2dc;
+
+    box-shadow: 0 7px 18px rgba(20, 35, 50, 0.08);
+}
+
+
+/* =========================================
+   ÁREA PRINCIPAL
+========================================= */
+
+.consulta {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 92px 0 100px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(18, 60, 105, 0.10),
+            transparent 48%
+        );
+}
+
+.consulta-content {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.consulta-label {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 20px;
+
+    padding: 7px 12px;
+
+    border: 1px solid #d8e4ef;
+    border-radius: 100px;
+
+    background: #eef5fb;
+
+    color: var(--primary);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.consulta h1 {
+    max-width: 720px;
+
+    margin: 0 auto 20px;
+
+    color: var(--text);
+
+    font-size: clamp(38px, 6vw, 62px);
+
+    line-height: 1.04;
+
+    letter-spacing: -2.5px;
+
+    font-weight: 750;
+}
+
+
+/* =========================================
+   DESCRIÇÃO
+========================================= */
+
+.consulta > .container > p {
+    max-width: 570px;
+
+    margin: 0 auto 42px;
+
+    color: var(--text-light);
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+.consulta-form {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 10px;
+
+    display: flex;
+    align-items: end;
+    gap: 10px;
+
+    background: var(--white);
+
+    border: 1px solid #dce4eb;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(23, 46, 70, 0.10),
+        0 3px 10px rgba(23, 46, 70, 0.04);
+
+    text-align: left;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-group {
+    flex: 1;
+
+    padding-left: 8px;
+}
+
+.input-group label {
+    display: block;
+
+    margin: 0 0 7px;
+
+    color: #536270;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+}
+
+.input-group input {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 10px 0 0;
+
+    border: 0;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+.input-group input::placeholder {
+    color: #a3adb7;
+}
+
+.input-group input:focus {
+    box-shadow: none;
+}
+
+
+/* =========================================
+   BOTÃO CONSULTAR
+========================================= */
+
+#consultarBtn {
+    flex-shrink: 0;
+
+    height: 56px;
+
+    padding: 0 25px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#consultarBtn:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 8px 20px rgba(18, 60, 105, 0.20);
+}
+
+#consultarBtn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading {
+    margin-top: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+}
+
+.loading-spinner {
+    width: 19px;
+    height: 19px;
+
+    border: 2px solid #dce5ed;
+
+    border-top-color: var(--primary);
+
+    border-radius: 50%;
+
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   ERRO
+========================================= */
+
+.error-message {
+    max-width: 650px;
+
+    margin: 18px auto 0;
+
+    padding: 14px 17px;
+
+    border: 1px solid #f1d2cf;
+
+    border-radius: 12px;
+
+    background: #fff7f6;
+
+    color: var(--error);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    text-align: left;
+}
+
+
+/* =========================================
+   RESULTADO
+========================================= */
+
+.resultado-section {
+    padding: 0 0 90px;
+}
+
+.resultado-card {
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    padding: 34px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow:
+        0 18px 45px rgba(20, 40, 60, 0.08);
+
+    animation: resultAppear 0.35s ease;
+}
+
+@keyframes resultAppear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    padding: 28px 0;
+
+    border-top: 1px solid var(--border);
+
+    background: #ffffff;
+
+    color: #89949e;
+
+    text-align: center;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: min(100% - 28px, 1120px);
+    }
+
+    .header {
+        height: 72px;
+    }
+
+    .logo img {
+        max-width: 150px;
+        max-height: 45px;
+    }
+
+    .whatsapp-button {
+        min-height: 38px;
+
+        padding: 0 13px;
+
+        font-size: 13px;
+    }
+
+    .consulta {
+        padding: 65px 0 70px;
+    }
+
+    .consulta h1 {
+        font-size: 39px;
+
+        letter-spacing: -1.7px;
+    }
+
+    .consulta > .container > p {
+        margin-bottom: 32px;
+
+        font-size: 15px;
+    }
+
+    .consulta-form {
+        display: block;
+
+        padding: 18px;
+
+        border-radius: 16px;
+    }
+
+    .input-group {
+        padding-left: 2px;
+
+        margin-bottom: 12px;
+    }
+
+    .input-group input {
+        height: 48px;
+    }
+
+    #consultarBtn {
+        width: 100%;
+
+        height: 52px;
+    }
+
+    .resultado-card {
+        padding: 24px;
+    }
+}
+
+
+/* =========================================
+   CELULARES PEQUENOS
+========================================= */
+
+@media (max-width: 380px) {
+
+    .consulta h1 {
+        font-size: 34px;
+    }
+
+    .whatsapp-button {
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   ÁREA DO ESPECIALISTA
+========================================= */
+
+.especialista-area {
+    margin-top: 32px;
+
+    padding-top: 26px;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+}
+
+
+/* =========================================
+   TEXTO DO ESPECIALISTA
+========================================= */
+
+.especialista-texto {
+    margin-bottom: 15px;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   BOTÃO ESPECIALISTA
+========================================= */
+
+.especialista-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    padding: 0 22px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(18, 60, 105, 0.14);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.especialista-button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 26px rgba(18, 60, 105, 0.20);
+}
+
+
+.especialista-button:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 6px 14px rgba(18, 60, 105, 0.14);
+}
+
+
+/* =========================================
+   FORMULÁRIO DO ESPECIALISTA
+========================================= */
+
+.especialista-section {
+    padding: 0 0 100px;
+}
+
+
+.especialista-card {
+    width: 100%;
+
+    max-width: 680px;
+
+    margin: 0 auto;
+
+    padding: 38px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow:
+        0 20px 50px rgba(20, 40, 60, 0.08);
+
+    animation:
+        especialistaAppear 0.35s ease;
+}
+
+
+@keyframes especialistaAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   LABEL DO ESPECIALISTA
+========================================= */
+
+.especialista-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    margin-bottom: 16px;
+
+    padding: 7px 12px;
+
+    border: 1px solid #d8e4ef;
+
+    border-radius: 100px;
+
+    background: var(--primary-light);
+
+    color: var(--primary);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.especialista-card h2 {
+    margin-bottom: 10px;
+
+    color: var(--text);
+
+    font-size: 28px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.7px;
+}
+
+
+/* =========================================
+   DESCRIÇÃO
+========================================= */
+
+.especialista-card > p {
+    margin-bottom: 28px;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.especialista-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.campo label {
+    color: #536270;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+
+    text-transform: uppercase;
+}
+
+
+.campo input {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    outline: none;
+
+    background: #fbfcfd;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.campo input::placeholder {
+    color: #a3adb7;
+}
+
+
+.campo input:hover {
+    border-color: #cbd6df;
+}
+
+
+.campo input:focus {
+    border-color: var(--primary);
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(18, 60, 105, 0.08);
+}
+
+
+/* =========================================
+   CNPJ AUTOMÁTICO
+========================================= */
+
+.campo input[readonly] {
+    background: #f1f4f7;
+
+    color: #647381;
+
+    cursor: not-allowed;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   BOTÃO WHATSAPP
+========================================= */
+
+.continuar-whatsapp {
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 6px;
+
+    padding: 0 20px;
+
+    border: 0;
+
+    border-radius: 12px;
+
+    background: #16865b;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(22, 134, 91, 0.14);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.continuar-whatsapp:hover {
+    background: #116b48;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 26px rgba(22, 134, 91, 0.20);
+}
+
+
+.continuar-whatsapp:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 6px 14px rgba(22, 134, 91, 0.14);
+}
+
+
+/* =========================================
+   RESPONSIVO — ESPECIALISTA
+========================================= */
+
+@media (max-width: 700px) {
+
+    .especialista-section {
+        padding-bottom: 70px;
+    }
+
+
+    .especialista-card {
+        padding: 28px 20px;
+
+        border-radius: 16px;
+    }
+
+
+    .especialista-card h2 {
+        font-size: 24px;
+
+        letter-spacing: -0.5px;
+    }
+
+
+    .especialista-card > p {
+        font-size: 14px;
+    }
+
+
+    .especialista-button {
+        min-height: 52px;
+
+        font-size: 13px;
+
+        padding: 0 16px;
+    }
+
+
+    .campo input {
+        height: 50px;
+    }
+
+
+    .continuar-whatsapp {
+        min-height: 52px;
+    }
+
+}
