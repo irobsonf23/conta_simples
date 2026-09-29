@@ -1,3 +1,4 @@
+```javascript
 console.log("JavaScript carregado!");
 
 
@@ -19,7 +20,9 @@ const resultadoCard =
     document.getElementById("resultadoCard");
 
 
+// =========================================
 // FORMULÁRIO DO ESPECIALISTA
+// =========================================
 
 const especialistaSection =
     document.getElementById("especialistaSection");
@@ -48,6 +51,11 @@ const numeroWhatsApp =
     "5511965435876";
 
 
+// Guarda a situação cadastral da última consulta
+let statusConsultaAtual =
+    "Não informado";
+
+
 // =========================================
 // WHATSAPP DO CABEÇALHO
 // =========================================
@@ -66,7 +74,8 @@ if (whatsappHeader) {
             mensagemHeader
         )}`;
 
-    whatsappHeader.target = "_blank";
+    whatsappHeader.target =
+        "_blank";
 
     whatsappHeader.rel =
         "noopener noreferrer";
@@ -77,45 +86,54 @@ if (whatsappHeader) {
 // FORMATAÇÃO DO CNPJ
 // =========================================
 
-cnpjInput.addEventListener(
-    "input",
-    function () {
+if (cnpjInput) {
 
-        let valor =
-            cnpjInput.value.replace(/\D/g, "");
+    cnpjInput.addEventListener(
+        "input",
+        function () {
 
-        valor =
-            valor.slice(0, 14);
+            let valor =
+                cnpjInput.value.replace(/\D/g, "");
 
-        valor =
-            valor.replace(
-                /^(\d{2})(\d)/,
-                "$1.$2"
-            );
+            valor =
+                valor.slice(0, 14);
 
-        valor =
-            valor.replace(
-                /^(\d{2})\.(\d{3})(\d)/,
-                "$1.$2.$3"
-            );
 
-        valor =
-            valor.replace(
-                /\.(\d{3})(\d)/,
-                ".$1/$2"
-            );
+            valor =
+                valor.replace(
+                    /^(\d{2})(\d)/,
+                    "$1.$2"
+                );
 
-        valor =
-            valor.replace(
-                /(\d{4})(\d)/,
-                "$1-$2"
-            );
 
-        cnpjInput.value =
-            valor;
+            valor =
+                valor.replace(
+                    /^(\d{2})\.(\d{3})(\d)/,
+                    "$1.$2.$3"
+                );
 
-    }
-);
+
+            valor =
+                valor.replace(
+                    /\.(\d{3})(\d)/,
+                    ".$1/$2"
+                );
+
+
+            valor =
+                valor.replace(
+                    /(\d{4})(\d)/,
+                    "$1-$2"
+                );
+
+
+            cnpjInput.value =
+                valor;
+
+        }
+    );
+
+}
 
 
 // =========================================
@@ -128,16 +146,20 @@ function formatarCNPJ(cnpj) {
         String(cnpj || "")
         .replace(/\D/g, "");
 
+
     if (valor.length !== 14) {
 
         return cnpj ||
             "Não informado";
+
     }
+
 
     return valor.replace(
         /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/,
         "$1.$2.$3/$4-$5"
     );
+
 }
 
 
@@ -153,6 +175,7 @@ function escaparHTML(valor) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
 
 
@@ -166,30 +189,42 @@ function mostrarResultado(dados) {
         dados.status?.text ||
         "Não informado";
 
+
+    // Guarda o status para o WhatsApp
+    statusConsultaAtual =
+        status;
+
+
     const nome =
         dados.company?.name ||
         "Não informado";
 
+
     const nomeFantasia =
         dados.alias ||
         "Não informado";
+
 
     const cnpj =
         dados.taxId
             ? formatarCNPJ(dados.taxId)
             : "Não informado";
 
+
     const cidade =
         dados.address?.city ||
         "Não informado";
+
 
     const estado =
         dados.address?.state ||
         "Não informado";
 
+
     const motivo =
         dados.reason?.text ||
         "Não informado";
+
 
     const atividade =
         dados.mainActivity?.text ||
@@ -203,8 +238,10 @@ function mostrarResultado(dados) {
     const statusNormalizado =
         status.toLowerCase().trim();
 
+
     const situacaoBaixada =
         statusNormalizado === "baixada";
+
 
     const situacaoAtiva =
         statusNormalizado === "ativa";
@@ -213,8 +250,10 @@ function mostrarResultado(dados) {
     let classeResultado =
         "resultado-pendencia";
 
+
     let icone =
         "!";
+
 
     let titulo =
         "Situação cadastral encontrada";
@@ -231,7 +270,9 @@ function mostrarResultado(dados) {
         titulo =
             "CNPJ com situação ativa";
 
-    } else if (situacaoBaixada) {
+    }
+
+    else if (situacaoBaixada) {
 
         classeResultado =
             "resultado-pendencia";
@@ -386,9 +427,7 @@ function mostrarResultado(dados) {
             <div class="especialista-area">
 
                 <p class="especialista-texto">
-
                     Precisa de ajuda com seu CNPJ?
-
                 </p>
 
 
@@ -397,9 +436,7 @@ function mostrarResultado(dados) {
                     class="especialista-button"
                     id="abrirEspecialista"
                 >
-
                     Clique aqui para falar com um especialista
-
                 </button>
 
             </div>
@@ -411,7 +448,7 @@ function mostrarResultado(dados) {
 
 
     // =========================================
-    // MOSTRA O RESULTADO
+    // MOSTRA RESULTADO
     // =========================================
 
     resultadoSection.hidden =
@@ -434,13 +471,13 @@ function mostrarResultado(dados) {
             "click",
             function () {
 
-
                 // Preenche o CNPJ automaticamente
 
                 if (cnpjCliente) {
 
                     cnpjCliente.value =
                         cnpj;
+
                 }
 
 
@@ -481,163 +518,162 @@ function mostrarResultado(dados) {
 // CONSULTA DO CNPJ
 // =========================================
 
-form.addEventListener(
-    "submit",
-    async function (event) {
+if (form) {
 
-        event.preventDefault();
+    form.addEventListener(
+        "submit",
+        async function (event) {
 
-
-        const cnpj =
-            cnpjInput.value.replace(
-                /\D/g,
-                ""
-            );
+            event.preventDefault();
 
 
-        // =====================================
-        // VALIDAÇÃO
-        // =====================================
-
-        if (cnpj.length !== 14) {
-
-            errorMessage.textContent =
-                "Digite um CNPJ válido com 14 números.";
-
-            errorMessage.hidden =
-                false;
-
-            resultadoSection.hidden =
-                true;
-
-            return;
-        }
-
-
-        // =====================================
-        // LIMPA A TELA
-        // =====================================
-
-        errorMessage.hidden =
-            true;
-
-        resultadoSection.hidden =
-            true;
-
-
-        if (especialistaSection) {
-
-            especialistaSection.hidden =
-                true;
-        }
-
-
-        loading.hidden =
-            false;
-
-
-        consultarBtn.disabled =
-            true;
-
-
-        consultarBtn.textContent =
-            "Consultando...";
-
-
-        try {
-
-
-            // =================================
-            // CONSULTA API
-            // =================================
-
-const resposta =
-    await fetch(`/api/cnpj/${cnpj}`);
-
-const dados =
-    await resposta.json();
-
-if (!resposta.ok) {
-
-    throw new Error(
-        dados.erro ||
-        "Não foi possível consultar o CNPJ."
-    );
-}
-
-console.log(
-    "Dados recebidos da API:",
-    dados
-);
-
-mostrarResultado(dados);
-
-
-            // =================================
-            // VERIFICA ERRO
-            // =================================
-
-            if (!resposta.ok) {
-
-                throw new Error(
-                    dados.erro ||
-                    "Não foi possível consultar o CNPJ."
+            const cnpj =
+                cnpjInput.value.replace(
+                    /\D/g,
+                    ""
                 );
+
+
+            // =====================================
+            // VALIDAÇÃO
+            // =====================================
+
+            if (cnpj.length !== 14) {
+
+                errorMessage.textContent =
+                    "Digite um CNPJ válido com 14 números.";
+
+                errorMessage.hidden =
+                    false;
+
+                resultadoSection.hidden =
+                    true;
+
+                return;
 
             }
 
 
-            console.log(
-                "Dados recebidos da API:",
-                dados
-            );
-
-
-            // =================================
-            // MOSTRA RESULTADO
-            // =================================
-
-            mostrarResultado(
-                dados
-            );
-
-
-        } catch (erro) {
-
-
-            console.error(
-                "Erro na consulta:",
-                erro
-            );
-
-
-            errorMessage.textContent =
-                erro.message ||
-                "Ocorreu um erro ao consultar o CNPJ.";
-
+            // =====================================
+            // LIMPA A TELA
+            // =====================================
 
             errorMessage.hidden =
-                false;
-
-
-        } finally {
-
-
-            loading.hidden =
                 true;
 
 
-            consultarBtn.disabled =
+            resultadoSection.hidden =
+                true;
+
+
+            if (especialistaSection) {
+
+                especialistaSection.hidden =
+                    true;
+
+            }
+
+
+            loading.hidden =
                 false;
 
 
+            consultarBtn.disabled =
+                true;
+
+
             consultarBtn.textContent =
-                "Consultar CNPJ";
+                "Consultando...";
+
+
+            try {
+
+                // =================================
+                // CONSULTA API
+                // =================================
+
+                const resposta =
+                    await fetch(
+                        `/api/cnpj/${cnpj}`
+                    );
+
+
+                // =================================
+                // TENTA RECEBER JSON
+                // =================================
+
+                const dados =
+                    await resposta.json();
+
+
+                // =================================
+                // VERIFICA ERRO
+                // =================================
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        dados.erro ||
+                        "Não foi possível consultar o CNPJ."
+                    );
+
+                }
+
+
+                console.log(
+                    "Dados recebidos da API:",
+                    dados
+                );
+
+
+                // =================================
+                // MOSTRA RESULTADO
+                // =================================
+
+                mostrarResultado(
+                    dados
+                );
+
+
+            }
+
+            catch (erro) {
+
+                console.error(
+                    "Erro na consulta:",
+                    erro
+                );
+
+
+                errorMessage.textContent =
+                    erro.message ||
+                    "Ocorreu um erro ao consultar o CNPJ.";
+
+
+                errorMessage.hidden =
+                    false;
+
+            }
+
+            finally {
+
+                loading.hidden =
+                    true;
+
+
+                consultarBtn.disabled =
+                    false;
+
+
+                consultarBtn.textContent =
+                    "Consultar CNPJ";
+
+            }
 
         }
+    );
 
-    }
-);
+}
 
 
 // =========================================
@@ -665,8 +701,8 @@ if (whatsappCliente) {
 
                 whatsappCliente.value =
                     valor
-                    ? `(${valor}`
-                    : "";
+                        ? `(${valor}`
+                        : "";
 
             }
 
@@ -706,11 +742,14 @@ if (especialistaForm) {
             const nome =
                 nomeCliente.value.trim();
 
+
             const cnpj =
                 cnpjCliente.value.trim();
 
+
             const email =
                 emailCliente.value.trim();
+
 
             const whatsapp =
                 whatsappCliente.value.trim();
@@ -725,6 +764,7 @@ if (especialistaForm) {
                 nomeCliente.focus();
 
                 return;
+
             }
 
 
@@ -733,6 +773,7 @@ if (especialistaForm) {
                 emailCliente.focus();
 
                 return;
+
             }
 
 
@@ -741,11 +782,12 @@ if (especialistaForm) {
                 whatsappCliente.focus();
 
                 return;
+
             }
 
 
             // =================================
-            // MENSAGEM
+            // MENSAGEM DO WHATSAPP
             // =================================
 
             const mensagem =
@@ -756,7 +798,7 @@ Nome: ${nome}
 CNPJ: ${cnpj}
 E-mail: ${email}
 WhatsApp: ${whatsapp}
-Situação cadastral: ${"Consulta realizada"}`;
+Situação cadastral: ${statusConsultaAtual}`;
 
 
             // =================================
@@ -783,3 +825,4 @@ Situação cadastral: ${"Consulta realizada"}`;
     );
 
 }
+```
