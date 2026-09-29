@@ -551,12 +551,26 @@ form.addEventListener(
             // CONSULTA API
             // =================================
 
-        const resposta =
+const resposta =
     await fetch(`/api/cnpj/${cnpj}`);
 
-const texto =
-    await resposta.text();
+const dados =
+    await resposta.json();
 
+if (!resposta.ok) {
+
+    throw new Error(
+        dados.erro ||
+        "Não foi possível consultar o CNPJ."
+    );
+}
+
+console.log(
+    "Dados recebidos da API:",
+    dados
+);
+
+mostrarResultado(dados);
 
 
             // =================================
